@@ -4,12 +4,23 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        },
+        decrement(state) {
+            state.count--;
+        }
+    },
+    actions: {
+        increment: ({ commit }) => commit('increment'),
+        decrement: ({ commit }) => commit('decrement')
+    },
+    modules: {},
+    getters: {
+        evenOrOdd: state => (state.count % 2 === 0 ? "偶数" : "奇数")
+    }
 })
